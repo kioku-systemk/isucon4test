@@ -100,11 +100,11 @@ var helpers = {
         if(user && helpers.calculatePasswordHash(password, user.salt) == user.password_hash) {
           console.log("PASSWORD:", user.password_hash, user);
           cb(null, user);
-        } else if(user) {
+        /*} else if(user) {
           cb('wrong_password', user);
         } else {
-          cb('wrong_login', user);
-        };
+          cb('wrong_login', user);*/
+        }
       }
     ], function(err, user) {
       var succeeded = !err;
