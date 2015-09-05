@@ -98,6 +98,7 @@ var helpers = {
       },
       function(user, cb) {
         if(user && helpers.calculatePasswordHash(password, user.salt) == user.password_hash) {
+          console.log("PASSWORD:", user.password_hash, user);
           cb(null, user);
         } else if(user) {
           cb('wrong_password', user);
@@ -286,7 +287,7 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Error: ' + err.message);
 });
 
-app.configure(function(){
+/*app.configure(function(){
     app.use(express.methodOverride());
     app.use(express.bodyParser());
     app.use(app.router);
@@ -302,7 +303,7 @@ app.configure('production', function(){
   app.use(express.static(__dirname + '/public', { maxAge: oneYear }));
   app.use(express.errorHandler());
 });
-
+*/
 var server = app.listen(process.env.PORT || 8080, function() {
   console.log('Listening on port %d', server.address().port);
 });
